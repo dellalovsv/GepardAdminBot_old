@@ -56,7 +56,8 @@ class Show(object):
 
     summa_dohod_rashod = (f'{dollar_ico}\n<b>Общая сумма доходов и расходов:</b>\n'
                           f'Доход: <b>%s</b> {config.CURRENCY}\n'
-                          f'Раход: <b>%s</b> {config.CURRENCY}')
+                          f'Раход: <b>%s</b> {config.CURRENCY}\n'
+                          f'Всего: <b>%s</b> {config.CURRENCY}')
 
     records_not_found = f'{error_ico}\nЗаписей не найдено!'
 

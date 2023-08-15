@@ -140,7 +140,8 @@ async def get_begin(m: Message, state: FSMContext):
                 if len(res_msg) > 0:
                     await bot.send_message(m.chat.id, res_msg)
                 await bot.send_message(m.chat.id, finance.Show.summa_dohod_rashod % ("%.2f" % dohod,
-                                                                                     "%.2f" % rashod))
+                                                                                     "%.2f" % rashod,
+                                                                                     "%.2f" % (dohod - rashod)))
             else:
                 await bot.send_message(m.chat.id, finance.Show.records_not_found)
             await state.finish()
@@ -165,7 +166,8 @@ async def get_begin(m: Message, state: FSMContext):
                 if len(res_msg) > 0:
                     await bot.send_message(m.chat.id, res_msg)
                 await bot.send_message(m.chat.id, finance.Show.summa_dohod_rashod % ("%.2f" % dohod,
-                                                                                     "%.2f" % rashod))
+                                                                                     "%.2f" % rashod,
+                                                                                     "%.2f" % (dohod - rashod)))
             else:
                 await bot.send_message(m.chat.id, finance.Show.records_not_found)
             await state.finish()
@@ -230,7 +232,11 @@ async def get_show_end_date(m: Message, state: FSMContext):
                         await bot.send_message(m.chat.id, res_msg)
                 if len(res_msg) > 0:
                     await bot.send_message(m.chat.id, res_msg)
-                await bot.send_message(m.chat.id, finance.Show.summa_dohod_rashod % (dohod, rashod))
+                await bot.send_message(m.chat.id, finance.Show.summa_dohod_rashod % (
+                    "%.2f" % dohod,
+                    "%.2f" % rashod,
+                    "%.2f" % (dohod - rashod)
+                ))
             await state.finish()
         else:
             await bot.send_message(m.chat.id, finance.Show.error_type_date)
