@@ -1,4 +1,5 @@
-from . import success_ico, cancel_ico, error_ico, cancel_msg, cancel_set_msg
+from . import success_ico, cancel_ico, error_ico, money_ico, dollar_ico, cancel_msg, cancel_set_msg
+import config
 
 
 class New(object):
@@ -21,7 +22,7 @@ class New(object):
 
     check_data = ('<b>Все ли данные верны?</b>\n\n'
                   '<b>Тип</b>: %s\n'
-                  '<b>Сумма</b>: %s\n'
+                  f'<b>Сумма</b>: %s {config.CURRENCY}\n'
                   '<b>Описание</b>: %s\n\n'
                   '<b>/yes</b> - Да, данные верны.\n'
                   '<b>/no</b> - Нет данные не верны.')
@@ -41,9 +42,27 @@ class Show(object):
     start = ('Отправь <b>/all - Показать все расходы/доходы</b>, <b>/last_week - Показать доходы/расходы'
              ' за последнюю неделю</b> или <b>/of_date - Показать доходы/расходы с даты по дату</b>.')
 
-    title_last_week = '<b>Доходы/Расходы за последнюю неделю (с %s по %s):</b>'
+    get_begin_date = 'Отправь <b>начальную дату.</b>'
+    get_end_date = 'Отправь <b>конечную дату.</b>'
+
+    title_last_week = f'{money_ico}\n<b>Доходы/Расходы за последнюю неделю (с %s по %s):</b>'
+    title_all = f'{money_ico}\n<b>Доходы/Расходы за весь период:</b>'
+    title_of_date = f'{money_ico}\n<b>Доходы/Расходы за период с %s по %s:</b>'
 
     msg = ('<b>Дата:</b> %s\n'
            '<b>Тип:</b> %s\n'
-           '<b>Сумма:</b> %s\n'
+           f'<b>Сумма:</b> %s {config.CURRENCY}\n'
            '<b>Описание:</b> %s')
+
+    summa_dohod_rashod = (f'{dollar_ico}\n<b>Общая сумма доходов и расходов:</b>\n'
+                          f'Доход: <b>%s</b> {config.CURRENCY}\n'
+                          f'Раход: <b>%s</b> {config.CURRENCY}')
+
+    records_not_found = f'{error_ico}\nЗаписей не найдено!'
+
+    error_command = (f'{error_ico}\n<b>Ты отправил не верную команду!</b>\n'
+                     f'Отправь одну из команд из сообщения ниже!')
+    error_date = (f'{error_ico}\nТы отправил не верную дату. Начальная дата не может быть больше сегодняшней\n'
+                  f'<b>Повтори попытку снова!</b>')
+    error_type_date = f'{error_ico}\nДата должна быть в формате <b>dd.mm.yyyy</b>!\nПопробуй повторно отправить дату.'
+    cancel_msg = f'{cancel_ico}\n<b>Текущая операция была отменена!</b>'

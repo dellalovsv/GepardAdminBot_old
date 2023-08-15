@@ -1,5 +1,4 @@
 from . import query
-from funcs import dt
 
 
 def new(type_rec: int, summa: float, desc: str) -> bool:
@@ -21,7 +20,7 @@ def show(all_: bool = False, begin_date: str = '0000-00-00', end_date: str = '00
             else:
                 return None
         else:
-            sql = 'select * from bot_finance'
+            sql = 'select * from bot_finance order by date_add'
             res = query(sql)
             if res is not False and res is not None and len(res) > 0:
                 return res
