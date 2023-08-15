@@ -1,6 +1,7 @@
 from db import admins
 
 from aiogram.types import Message
+from aiogram.dispatcher import FSMContext
 
 
 def check_admin_bot(func):
