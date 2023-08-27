@@ -1,4 +1,5 @@
 __all__ = [
     'start',
-    'finance'
+    'finance',
+    'diller'
 ]
