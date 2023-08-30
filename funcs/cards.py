@@ -26,3 +26,20 @@ def plus_count_cards(count: int, begin: int):
         return [begin, end]
     else:
         return [begin, begin]
+
+
+def check_serial_number_of_valid(number):
+    if check_int(number):
+        number = str(number)
+        if len(number) < COUNT_NUMBERS_IN_SERIAL_CARD:
+            i = 0
+            nulls = ''
+            while i < COUNT_NUMBERS_IN_SERIAL_CARD - len(number):
+                nulls += '0'
+                i += 1
+            number = nulls + number
+            return number
+        else:
+            return number
+    else:
+        ...
