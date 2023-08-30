@@ -1,5 +1,4 @@
 from . import query
-from funcs import dt
 
 
 def check_exists_diller(diller: str | int) -> bool:
